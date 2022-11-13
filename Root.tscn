@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=2]
+[gd_scene load_steps=151 format=2]
 
 [ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://map/textures/wall_set.png" type="Texture" id=2]
@@ -10,6 +10,10 @@
 
 [sub_resource type="DynamicFont" id=139]
 size = 13
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=150]
+size = 8
 font_data = ExtResource( 7 )
 
 [sub_resource type="NavigationPolygon" id=67]
@@ -1014,8 +1018,20 @@ margin_left = -420.0
 margin_top = -494.0
 margin_right = -199.0
 margin_bottom = -480.0
+rect_pivot_offset = Vector2( 88, 33 )
 custom_fonts/font = SubResource( 139 )
 text = "<- Bounus Punkte"
+
+[node name="RedHering" type="Label" parent="."]
+margin_left = -978.0
+margin_top = -100.0
+margin_right = -923.0
+margin_bottom = -81.0
+rect_pivot_offset = Vector2( 88, 33 )
+custom_fonts/font = SubResource( 150 )
+text = "Red
+Hering"
+align = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
