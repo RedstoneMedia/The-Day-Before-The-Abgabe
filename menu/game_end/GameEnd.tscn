@@ -1,0 +1,493 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://menu/theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/game_end/game_end.gd" type="Script" id=2]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://computer/computer.png" type="Texture" id=4]
+[ext_resource path="res://sounds/SoundEffectsPlayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://menu/sound_label.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 15
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Load"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TypedText:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/GameOverText:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:rect_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 26.4 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:visible_characters")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.6, 5.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 7, 7, 9 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.3, 4.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/NextButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 6.1, 6.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/MockText:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 5.5, 5.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/MockText:rect_rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 5.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -13.2, -13.2 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/NewHighscore:rect_scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 5.2, 5.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("SoundEffectsPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 4.8, 5.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ "bump" ],
+"method": "play_sound_effect"
+}, {
+"args": [ "bump" ],
+"method": "play_sound_effect"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TypedText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/GameOverText:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 26.4 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:visible_characters")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 10 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/Points:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/NextButton:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/NextButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/MockText:rect_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("CanvasLayer/MarginContainer/CenterContainer/MockText:rect_rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -13.2 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/NewHighscore:rect_scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=17]
+size = 14
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="GameEnd" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_bottom = 50
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer"]
+margin_right = 512.0
+margin_bottom = 100.0
+mouse_filter = 2
+
+[node name="Points" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer"]
+margin_left = 121.0
+margin_top = 35.0
+margin_right = 391.0
+margin_bottom = 65.0
+rect_rotation = 26.4
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 200, 0 )
+custom_fonts/font = SubResource( 11 )
+text = "Punkte: 9"
+align = 1
+
+[node name="MockText" type="Label" parent="CanvasLayer/MarginContainer/CenterContainer"]
+margin_left = 106.0
+margin_top = 24.0
+margin_right = 406.0
+margin_bottom = 75.0
+rect_rotation = -13.2
+rect_pivot_offset = Vector2( 150, 25 )
+custom_fonts/font = SubResource( 16 )
+text = "Das geht
+aber
+schon bersser oder ?"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Load = SubResource( 6 )
+anims/RESET = SubResource( 10 )
+
+[node name="SoundEffectsPlayer" parent="." instance=ExtResource( 5 )]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 130.0
+custom_constants/separation = 0
+
+[node name="GameOverText" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 472.0
+margin_bottom = 30.0
+text = "Abgabe Tag"
+align = 1
+percent_visible = 0.0
+script = ExtResource( 6 )
+sound_effects_player_path = NodePath("../../../SoundEffectsPlayer")
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+margin_top = 30.0
+margin_right = 472.0
+margin_bottom = 37.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 37.0
+margin_right = 472.0
+margin_bottom = 66.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="TypedText" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 149.0
+margin_right = 323.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.2
+visible_characters = 0
+percent_visible = 0.0
+text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. "
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 327.0
+margin_right = 472.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="Spacer2" type="Control" parent="MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 472.0
+margin_bottom = 85.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 85.0
+margin_right = 472.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+
+[node name="NewHighscore" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+visible = false
+margin_top = 4.0
+margin_right = 240.0
+margin_bottom = 20.0
+rect_scale = Vector2( 1e-05, 1 )
+rect_pivot_offset = Vector2( 120, 8 )
+custom_fonts/font = SubResource( 17 )
+text = "Neuer Highscore"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 472.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="NextButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 322.0
+margin_right = 472.0
+margin_bottom = 25.0
+text = "Weiter"
+
+[node name="Background" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 492.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="Background/VBoxContainer"]
+margin_right = 472.0
+margin_bottom = 110.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="NextTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/NextButton" to="." method="_on_NextButton_button_up"]
+[connection signal="timeout" from="NextTimer" to="." method="_on_NextTimer_timeout"]

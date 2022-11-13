@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy/Enemy.gd" type="Script" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.13
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 19.8
+initial_velocity_random = 0.77
+angular_velocity = 100.8
+angular_velocity_random = 0.29
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 185.3
+angle_random = 0.22
+scale_curve = SubResource( 2 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -3, 3, 0, -3, 3, 3 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -3, 3, 0, -3, 3, 3 )
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 5.0
+neighbor_dist = 400.0
+time_horizon = 15.0
+max_speed = 400.0
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="DespwanTimer" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+autostart = true
+
+[node name="DeathParticles2D" type="Particles2D" parent="."]
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.55
+process_material = SubResource( 3 )
+
+[connection signal="velocity_computed" from="NavigationAgent" to="." method="_on_NavigationAgent_velocity_computed"]
+[connection signal="timeout" from="DespwanTimer" to="." method="_on_DespwanTimer_timeout"]

@@ -1,0 +1,210 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://player/player.gd" type="Script" id=1]
+[ext_resource path="res://player/player_theme.tres" type="Theme" id=2]
+[ext_resource path="res://player/screen_shake.gd" type="Script" id=3]
+[ext_resource path="res://sounds/SoundEffectsPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/sound_label.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform float strength = 0.5;
+
+void fragment() {
+    float len = length(UV - vec2(0.5));
+
+    COLOR = vec4(0.0, 0.0, 0.0, len * strength);
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/strength = 0.2
+
+[sub_resource type="Animation" id=10]
+resource_name = "HideHint"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/MarginContainer/HBoxContainer/VBoxContainer/HintText:percent_visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/MarginContainer/HBoxContainer/VBoxContainer/HintText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "ShowHint"
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI/MarginContainer/HBoxContainer/VBoxContainer/HintText:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.5
+
+[sub_resource type="RectangleShape2D" id=7]
+
+[node name="Player" type="KinematicBody2D" groups=["player"]]
+collision_layer = 10
+collision_mask = 7
+script = ExtResource( 1 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="ColorRect" parent="UI"]
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 635.0
+margin_bottom = 140.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
+margin_right = 625.0
+margin_bottom = 130.0
+alignment = 2
+
+[node name="HintShowAnimation" type="AnimationPlayer" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+root_node = NodePath("../../../../..")
+anims/HideHint = SubResource( 10 )
+anims/RESET = SubResource( 9 )
+anims/ShowHint = SubResource( 8 )
+
+[node name="HintText" type="Label" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 105.0
+margin_right = 625.0
+margin_bottom = 130.0
+size_flags_vertical = 5
+text = "Geh mit WASD zum computer"
+align = 1
+percent_visible = 0.0
+script = ExtResource( 5 )
+sound_effects_player_path = NodePath("../../../../../SoundEffectsPlayer")
+loudness = -1.0
+
+[node name="HintHideTimer" type="Timer" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+wait_time = 0.2
+one_shot = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 635.0
+margin_bottom = 140.0
+
+[node name="ReamaingTimeLable" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+margin_right = 625.0
+margin_bottom = 25.0
+text = "SCHLAFENSZEIT:"
+
+[node name="Score" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+margin_top = 29.0
+margin_right = 625.0
+margin_bottom = 54.0
+text = "Seiten: 0.0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.2, 0.2 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[node name="ScreenShake" type="Node" parent="Camera2D"]
+script = ExtResource( 3 )
+
+[node name="ShakeTween" type="Tween" parent="Camera2D/ScreenShake"]
+
+[node name="Frequency" type="Timer" parent="Camera2D/ScreenShake"]
+
+[node name="Duration" type="Timer" parent="Camera2D/ScreenShake"]
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -7, 7, 7, 7, 7, -7, -7, -7 )
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="TouchResetTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="TouchDebounceTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 40.0
+one_shot = true
+autostart = true
+
+[node name="DashHurtTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="HalfSecondTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="DashHurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashHurtBox"]
+shape = SubResource( 7 )
+
+[node name="SoundEffectsPlayer" parent="." instance=ExtResource( 4 )]
+
+[connection signal="animation_finished" from="UI/MarginContainer/HBoxContainer/VBoxContainer/HintShowAnimation" to="." method="_on_HintShowAnimation_animation_finished"]
+[connection signal="timeout" from="UI/MarginContainer/HBoxContainer/VBoxContainer/HintHideTimer" to="." method="_on_HintShowTimer_timeout"]
+[connection signal="timeout" from="Camera2D/ScreenShake/Frequency" to="Camera2D/ScreenShake" method="_on_Frequency_timeout"]
+[connection signal="timeout" from="Camera2D/ScreenShake/Duration" to="Camera2D/ScreenShake" method="_on_Duration_timeout"]
+[connection signal="timeout" from="TouchResetTimer" to="." method="_on_TouchResetTimer_timeout"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
+[connection signal="timeout" from="DashHurtTimer" to="." method="_on_DashHurtTimer_timeout"]
+[connection signal="timeout" from="HalfSecondTimer" to="." method="_on_HalfSecondTimer_timeout"]

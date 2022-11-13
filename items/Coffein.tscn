@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://items/coffein.gd" type="Script" id=1]
+[ext_resource path="res://items/caffine.png" type="Texture" id=2]
+
+[sub_resource type="Curve" id=141]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.00681818 ), -3.74737, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=142]
+curve = SubResource( 141 )
+
+[sub_resource type="ParticlesMaterial" id=140]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 45.0
+initial_velocity_random = 0.48
+angular_velocity = 242.37
+angular_velocity_random = 0.38
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 0.24
+scale_curve = SubResource( 142 )
+
+[sub_resource type="RectangleShape2D" id=139]
+extents = Vector2( 8.50001, 8 )
+
+[node name="Coffein" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Particles" type="Particles2D" parent="."]
+modulate = Color( 1.4, 1.4, 1.4, 1 )
+amount = 15
+lifetime = 0.4
+explosiveness = 0.11
+process_material = SubResource( 140 )
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+visible = false
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 139 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
+texture = ExtResource( 2 )
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
+[connection signal="timeout" from="FreeTimer" to="." method="_on_FreeTimer_timeout"]

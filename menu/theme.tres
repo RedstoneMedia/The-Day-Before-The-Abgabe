@@ -1,0 +1,67 @@
+[gd_resource type="Theme" load_steps=14 format=2]
+
+[ext_resource path="res://fonts/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu/main_menu/check_box.png" type="Texture" id=3]
+[ext_resource path="res://menu/main_menu/check_box_uncheckd.png" type="Texture" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.152941, 0.152941, 0.152941, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 1 )
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+draw_center = false
+
+[sub_resource type="DynamicFont" id=7]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[resource]
+default_font = ExtResource( 1 )
+Button/styles/focus = SubResource( 14 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 12 )
+Button/styles/pressed = SubResource( 15 )
+CheckBox/icons/checked = ExtResource( 3 )
+CheckBox/icons/unchecked = ExtResource( 4 )
+CheckBox/styles/pressed = SubResource( 16 )
+Label/colors/font_color_shadow = Color( 0.109804, 0.109804, 0.152941, 1 )
+Label/constants/shadow_as_outline = 1
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/fonts/font = SubResource( 8 )
+Label/styles/normal = SubResource( 4 )
+RichTextLabel/fonts/normal_font = SubResource( 7 )
+VScrollBar/styles/scroll = SubResource( 9 )

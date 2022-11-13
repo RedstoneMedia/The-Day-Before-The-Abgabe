@@ -1,0 +1,316 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://menu/theme.tres" type="Theme" id=1]
+[ext_resource path="res://menu/main_menu/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sounds/SoundEffectsPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://menu/sound_label.gd" type="Script" id=5]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.00340903 ), -2.05553, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+direction = Vector3( 1, 1, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 317.65
+angular_velocity = 156.43
+angular_velocity_random = 0.35
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_random = 0.45
+scale_curve = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 15
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Title:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/Title:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/Title:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/Highscore:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "load"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.2, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Title:percent_visible")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/Highscore:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.9, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "play"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+glow_enabled = true
+glow_intensity = 0.9
+glow_bloom = 0.01
+glow_blend_mode = 0
+glow_hdr_threshold = 1.1
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="SoundEffectsPlayer" parent="." instance=ExtResource( 4 )]
+
+[node name="Particles2D" type="Particles2D" parent="."]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
+position = Vector2( -50, -41 )
+process_material = SubResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 560.0
+margin_bottom = 130.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 23.0
+margin_right = 540.0
+margin_bottom = 86.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 270, 31 )
+text = "The day before the
+Abgabe"
+align = 1
+percent_visible = 0.0
+script = ExtResource( 5 )
+sound_effects_player_path = NodePath("../../../SoundEffectsPlayer")
+
+[node name="Highscore" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 91.0
+margin_right = 540.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 11 )
+text = "Highscore: 15"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 560.0
+margin_bottom = 135.0
+custom_constants/separation = 20
+alignment = 2
+
+[node name="NotARobot" type="CheckBox" parent="MarginContainer/VBoxContainer2"]
+margin_left = 10.0
+margin_right = 530.0
+margin_bottom = 25.0
+size_flags_horizontal = 4
+text = "Ich bin kein Roboter"
+align = 1
+
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+margin_left = 182.0
+margin_top = 45.0
+margin_right = 357.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Spielen"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer2"]
+margin_left = 220.0
+margin_top = 90.0
+margin_right = 320.0
+margin_bottom = 115.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Exit"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 560.0
+margin_bottom = 130.0
+mouse_filter = 2
+
+[node name="AuthorText" type="Label" parent="MarginContainer/VBoxContainer3"]
+margin_right = 540.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 2 )
+text = "von: RedstoneMedia"
+align = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "load"
+anims/RESET = SubResource( 8 )
+anims/load = SubResource( 7 )
+anims/play = SubResource( 12 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[connection signal="resized" from="." to="." method="_on_MainMenu_resized"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer2/NotARobot" to="." method="_on_NotARobot_toggled"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/PlayButton" to="." method="_on_PlayButton_button_up"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer2/ExitButton" to="." method="_on_ExitButton_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
