@@ -9,6 +9,7 @@ onready var item_spawn_areas = $SpawnAreas/ItemAreas
 onready var items = $Items
 onready var item_respawn_timer = $ItemRespawnTimer
 
+
 func _ready():
 	spawn_item()
 
@@ -22,8 +23,8 @@ func spawn_enemy():
 func spawn_item():
 	randomize()
 	var spawn_areas = item_spawn_areas.get_children()
-	var spawn_area : CollisionShape2D = spawn_areas[floor(rand_range(0, len(spawn_areas)))]
-	var shape : RectangleShape2D = spawn_area.shape
+	var spawn_area: CollisionShape2D = spawn_areas[floor(rand_range(0, len(spawn_areas)))]
+	var shape: RectangleShape2D = spawn_area.shape
 	var extents = shape.extents
 	var x = rand_range(-extents.x / 2, extents.x / 2) + spawn_area.global_position.x
 	var y = rand_range(-extents.y / 2, extents.y / 2) + spawn_area.global_position.y

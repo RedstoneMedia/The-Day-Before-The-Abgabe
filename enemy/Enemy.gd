@@ -6,7 +6,7 @@ export(float) var speed = 10.0
 onready var navigation = $NavigationAgent
 onready var death_particales = $DeathParticles2D
 onready var player = get_tree().get_nodes_in_group("player")[0]
-onready var use_avoidance = OS.get_name() != "HTML5" # Avoidanve does not seem to work for web builds
+onready var use_avoidance = OS.get_name() != "HTML5"  # Avoidanve does not seem to work for web builds
 
 var velocity = Vector2.ZERO
 var is_dead = false
@@ -41,6 +41,7 @@ func _physics_process(delta):
 			queue_free()
 	else:
 		follow_player()
+
 
 func _on_NavigationAgent_velocity_computed(safe_velocity):
 	velocity = move_and_slide(safe_velocity)

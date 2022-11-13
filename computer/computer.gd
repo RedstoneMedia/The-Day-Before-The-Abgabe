@@ -6,6 +6,7 @@ onready var player = get_tree().get_nodes_in_group("player")[0]
 var current_body
 var hint_shown = false
 
+
 func on_type(c: String):
 	lable.text += c
 	var line_count = lable.get_line_count()
@@ -24,6 +25,19 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed:
 			on_type(char(event.unicode))
+	elif event is InputEventJoypadButton:
+		if event.pressed:
+			var button_name = ""
+			match event.button_index:
+				0:
+					button_name = "B"
+				1:
+					button_name = "A"
+				2:
+					button_name = "Y"
+				3:
+					button_name = "X"
+			on_type(button_name)
 
 
 func _on_InteractArea_body_entered(body):
@@ -40,6 +54,6 @@ func _on_InteractArea_body_exited(_body):
 	current_body = null
 	set_process_input(false)
 
+
 func _on_AudioStreamPlayer2D_finished():
 	$AudioStreamPlayer2D.play()
-

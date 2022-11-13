@@ -2,6 +2,7 @@ extends Control
 
 var game_scene = load("res://Root.tscn")
 onready var play_button = $MarginContainer/VBoxContainer2/PlayButton
+onready var reset_button = $MarginContainer/VBoxContainer2/HBoxContainer/ResetButton
 onready var high_score_label = $MarginContainer/VBoxContainer/Highscore
 onready var not_a_robot_check_box = $MarginContainer/VBoxContainer2/NotARobot
 
@@ -14,6 +15,13 @@ func _ready():
 	if GameData.high_score > -1:
 		high_score_label.text = "Highscore: " + str(GameData.high_score)
 		high_score_label.show()
+	else:
+		high_score_label.hide()
+	if not GameData.first_time_playing:
+		reset_button.show()
+	else:
+		reset_button.hide()
+	$MarginContainer/VBoxContainer2/NotARobot.grab_focus()
 
 
 func set_not_a_robot(not_a_robot: bool):
@@ -48,3 +56,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		get_tree().change_scene_to(game_scene)
 	elif anim_name == "load":
 		set_process(false)
+
+
+func _on_ResetButton_button_up():
+	print("reset")
+	GameData.high_score = -1
+	GameData.first_time_playing = true
+	GameData.save_data()
+	_ready()

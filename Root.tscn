@@ -6,7 +6,7 @@
 [ext_resource path="res://map/textures/empty.png" type="Texture" id=4]
 [ext_resource path="res://items/RedHering.tscn" type="PackedScene" id=5]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://computer/Compter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://computer/Computer.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=139]
 size = 13
@@ -1000,6 +1000,14 @@ tracks/0/keys = {
 [node name="Root" type="Node2D"]
 modulate = Color( 0, 0, 0, 0 )
 script = ExtResource( 3 )
+
+[node name="Nein" type="Label" parent="."]
+margin_left = -218.0
+margin_top = -161.0
+margin_right = 3.0
+margin_bottom = -132.0
+custom_fonts/font = SubResource( 139 )
+text = "Stop"
 
 [node name="BounusPunkte" type="Label" parent="."]
 margin_left = -420.0

@@ -97,12 +97,13 @@ custom_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 635.0
+margin_right = 502.0
 margin_bottom = 140.0
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer"]
-margin_right = 625.0
+margin_left = 246.0
+margin_right = 246.0
 margin_bottom = 130.0
 alignment = 2
 
@@ -113,6 +114,7 @@ anims/RESET = SubResource( 9 )
 anims/ShowHint = SubResource( 8 )
 
 [node name="HintText" type="Label" parent="UI/MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
 margin_top = 105.0
 margin_right = 625.0
 margin_bottom = 130.0
@@ -131,17 +133,17 @@ one_shot = true
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 635.0
+margin_right = 502.0
 margin_bottom = 140.0
 
 [node name="ReamaingTimeLable" type="Label" parent="UI/MarginContainer/VBoxContainer"]
-margin_right = 625.0
+margin_right = 492.0
 margin_bottom = 25.0
 text = "SCHLAFENSZEIT:"
 
 [node name="Score" type="Label" parent="UI/MarginContainer/VBoxContainer"]
 margin_top = 29.0
-margin_right = 625.0
+margin_right = 492.0
 margin_bottom = 54.0
 text = "Seiten: 0.0"
 
@@ -178,7 +180,7 @@ one_shot = true
 autostart = true
 
 [node name="GameOverTimer" type="Timer" parent="."]
-wait_time = 40.0
+wait_time = 45.0
 one_shot = true
 autostart = true
 

@@ -3,12 +3,12 @@ extends KinematicBody2D
 
 export(float) var base_player_speed = 4000.0
 
-onready var screen_shake : ScreenShake = $Camera2D/ScreenShake
+onready var screen_shake: ScreenShake = $Camera2D/ScreenShake
 onready var collision_shape = $CollisionShape
 onready var dash_hurt_box = $DashHurtBox
 onready var touch_reset_timer = $TouchResetTimer
 onready var dash_hurt_timer = $DashHurtTimer
-onready var game_over_timer  = $GameOverTimer
+onready var game_over_timer = $GameOverTimer
 onready var touch_debounce_timer = $TouchDebounceTimer
 onready var remaing_time_lable = $UI/MarginContainer/VBoxContainer/ReamaingTimeLable
 onready var hint_text = $UI/MarginContainer/HBoxContainer/VBoxContainer/HintText
@@ -29,7 +29,7 @@ var game_over_scene = preload("res://menu/game_end/GameEnd.tscn")
 var hint_texts = []
 var did_show_sleepy_hint = false
 var did_show_enemy_hint = false
-var kps = 0.0 # Keys per second. Used for screen shake amplutude
+var kps = 0.0  # Keys per second. Used for screen shake amplutude
 var last_kps = 0.0
 
 
@@ -47,7 +47,7 @@ func show_next_hint():
 		show_hint(next_hint)
 
 
-func show_hint(text : String):
+func show_hint(text: String):
 	hint_text.text = text
 	hint_animation.play("ShowHint")
 
@@ -65,11 +65,15 @@ func dash_remove_enemies():
 		screen_shake.call_deferred("start", 0.3, 9, 3 * killed_enemy_count, 2)
 
 
-func handle_dash(delta):
+func handle_dash():
 	if is_dashing:
 		dash_remove_enemies()
 		return
-	var can_actually_dash = can_dash and velocity.length_squared() > 0 and game_over_timer.time_left > 5.0
+	var can_actually_dash = (
+		can_dash
+		and velocity.length_squared() > 0
+		and game_over_timer.time_left > 5.0
+	)
 	if Input.is_action_just_pressed("dash") and can_actually_dash:
 		velocity *= 20
 		can_dash = false
@@ -118,7 +122,7 @@ func did_touch_wall() -> bool:
 func update_ui():
 	var remaning_time = game_over_timer.time_left
 	# Show sleepy hint, if needed
-	if remaning_time < 25 and not did_show_sleepy_hint:
+	if remaning_time < 30 and not did_show_sleepy_hint:
 		hint_texts.append("Du wirst müde")
 		hint_texts.append("Siehe dich mal um")
 		hint_texts.append("Vielleicht findest du etwas\n, was dich aufmuntert")
@@ -126,7 +130,7 @@ func update_ui():
 		did_show_sleepy_hint = true
 	# Update lables
 	remaing_time_lable.text = "Schlafenszeit: " + str(round(remaning_time)) + "s"
-	var vignette_strength = 0.2 * exp(-0.08 * (remaning_time - 40)) 
+	var vignette_strength = 0.2 * exp(-0.08 * (remaning_time - 45))
 	vignette.material.set_shader_param("strength", vignette_strength)
 
 
@@ -143,7 +147,7 @@ func _process(_delta):
 
 func _physics_process(delta):
 	velocity += get_input_velocity() * base_player_speed * speed_multiplier
-	handle_dash(delta)
+	handle_dash()
 	velocity = move_and_slide(velocity * delta)
 	if did_touch_wall():
 		maybe_spawn_enemy()
