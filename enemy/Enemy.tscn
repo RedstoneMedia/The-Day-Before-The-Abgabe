@@ -38,7 +38,7 @@ polygon = PoolVector2Array( -3, 3, 0, -3, 3, 3 )
 
 [node name="NavigationAgent" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 5.0
+radius = 8.0
 max_speed = 400.0
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
